@@ -1,0 +1,47 @@
+name: Build GLG APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      # ติดตั้ง Android SDK + build-tools
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: |
+            platforms;android-34
+            build-tools;34.0.0
+
+      - name: Create local.properties
+        run: echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+
+      # สร้าง Gradle wrapper (ถ้าระบบไม่มี wrapper ใน repo)
+      - name: Generate Gradle wrapper
+        uses: gradle/gradle-build-action@v3
+        with:
+          gradle-version: "8.7"
+          arguments: wrapper
+
+      - name: Build Release APK
+        run: ./gradlew assembleRelease --stacktrace
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: GLG-release-apk
+          path: app/build/outputs/apk/release/*.apk
