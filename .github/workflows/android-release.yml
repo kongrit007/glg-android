@@ -1,0 +1,5 @@
+# สร้าง keystore (ตั้งค่า/รหัสตามต้องการ)
+keytool -genkeypair -v -keystore glg-release.keystore -alias glg -keyalg RSA -keysize 2048 -validity 3650
+
+# แปลงเป็น base64 (ค่านี้เอาไปใส่ GitHub Secret: ANDROID_KEYSTORE_BASE64)
+base64 glg-release.keystore > keystore.b64
