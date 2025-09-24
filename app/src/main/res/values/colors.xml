@@ -1,0 +1,6 @@
+<resources>
+    <color name="glg_green">#00A859</color>
+    <color name="glg_green_dark">#007A40</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+</resources>

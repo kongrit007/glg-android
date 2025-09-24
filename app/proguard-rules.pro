@@ -1,0 +1,2 @@
+-keep class co.th.glg.webapp.** { *; }
+-dontwarn org.chromium.**

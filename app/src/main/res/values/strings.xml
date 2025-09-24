@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GLG</string>
+    <string name="glg_url">https://glg.co.th/</string>
+    <string name="loading">กำลังโหลด...</string>
+    <string name="offline">ออฟไลน์: กรุณาเชื่อมต่ออินเทอร์เน็ต</string>
+    <string name="pull_to_refresh">ดึงเพื่อรีเฟรช</string>
+    <string name="need_location">อนุญาตตำแหน่งเพื่อใช้บริการระบุตำแหน่งบนเว็บไซต์</string>
+</resources>
